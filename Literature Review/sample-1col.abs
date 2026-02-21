@@ -1,6 +1,1 @@
-A clear and well-documented \LaTeX{} document is presented as an
-  article formatted for publication by CEUR-WS in a conference
-  proceedings. Based on the ``ceurart'' document class, this article
-  presents and explains many of the common variations, as well as many
-  of the formatting elements an author may use in the preparation of
-  the documentation of their work.
+This paper addresses the task of Job-Skill Matching with Skill Type Classification. The objective is to retrieve relevant professional skills for a given job title and further classify each skill into one of three categories: core, complementary, or transversal. The task combines information retrieval and multi-label classification, requiring models that understand semantic relationships between job titles and skills while distinguishing essential competencies from contextual or broad transferable skills. We review prior work on skill extraction, occupational classification, domain-specific embeddings, and transversal skill detection to inform our methodological approach.
