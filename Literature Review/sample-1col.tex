@@ -1,65 +1,188 @@
+%% The first command in your LaTeX source must be the \documentclass command.
 \documentclass[]{ceurart}
 
 \sloppy
-
 \usepackage{listings}
 \lstset{breaklines=true}
 
 \begin{document}
 
-\copyrightyear{2026}
+\copyrightyear{2025}
 \copyrightclause{Copyright for this paper by its authors.
   Use permitted under Creative Commons License Attribution 4.0
   International (CC BY 4.0).}
 
-\conference{CLEF 2026: Conference and Labs of the Evaluation Forum}
+\conference{CLEF 2025}
 
 \title{Job-Skill Matching with Skill Type Classification}
 
-\author[1]{Hussain Mustansir}
-\author[1]{Mahrukh Yousuf}
-\author[1]{Afiya Sohail}
+\tnotemark[1]
+\tnotetext[1]{Working notes paper submitted to CLEF 2025.}
 
+\author[1]{Hussain Mustansir}[
+email=hm07xxx@st.habib.edu.pk,
+]
+\cormark[1]
+\fnmark[1]
+\author[1]{Mahrukh Yousuf}[
+email=my07xxx@st.habib.edu.pk,
+]
+\fnmark[1]
+\author[1]{Afiya Sohail}[
+email=as07xxx@st.habib.edu.pk,
+]
+\fnmark[1]
 \address[1]{Habib University, Karachi, Pakistan}
 
+\cortext[1]{Corresponding author.}
+\fntext[1]{These authors contributed equally.}
+
 \begin{abstract}
-This paper addresses the task of Job-Skill Matching with Skill Type Classification. The objective is to retrieve relevant professional skills for a given job title and further classify each skill into one of three categories: core, complementary, or transversal. The task combines information retrieval and multi-label classification, requiring models that understand semantic relationships between job titles and skills while distinguishing essential competencies from contextual or broad transferable skills. We review prior work on skill extraction, occupational classification, domain-specific embeddings, and transversal skill detection to inform our methodological approach.
+This literature review addresses the task of Job-Skill Matching with Skill Type Classification.
+The task requires, given a job title, retrieving a ranked list of
+relevant skills and classifying each as core, complementary, or
+transversal. We are provided a training set of at least 5,000 job title--skill pairs, a development
+set of 200 job titles with ESCO-normalised skill annotations carrying a core/contextual relevance
+label, and a test set of 500 job titles for blind evaluation. We survey
+six prior works that address skill extraction, weakly supervised skill matching, occupational
+classification, domain-adaptive pretraining, technical NER, and transversal skill detection ---
+each contributing methods or findings we draw on in building our approach.
 \end{abstract}
 
 \begin{keywords}
-Job-Skill Matching \sep
-Skill Classification \sep
-Information Retrieval \sep
-Transformers \sep
-Multi-label Classification
+  job-skill matching \sep
+  skill type classification \sep
+  ESCO \sep
+  transformer models \sep
+  contrastive learning \sep
+  named entity recognition \sep
+  information retrieval
 \end{keywords}
 
 \maketitle
 
-\section{Introduction To The Task}
+%% ---------------------------------------------------------------
+\section{Introduction to the Task}
+%% ---------------------------------------------------------------
 
-The Job-Skill Matching with Skill Type Classification task focuses on two interconnected objectives. First, given a job title, the system must retrieve the most relevant professional skills associated with that role. Second, each retrieved skill must be classified into one of three categories: core, complementary, or transversal.
+The task of Job-Skill Matching with Skill Type Classification sits at the intersection of
+information retrieval and multi-class labelling. A system must take a raw job title as input,
+retrieve a ranked list of skills from the ESCO taxonomy, and simultaneously assign each
+retrieved skill one of three labels: \textit{core}, \textit{complementary}, or \textit{transversal}. The training
+data offers at least 5,000 job title. The development set introduces a
+richer annotation layer of 200 job titles with ESCO-normalised skills marked as either core or
+contextual, which forces a model to capture the difference between what a job \textit{always}
+demands and what it \textit{sometimes} demands. The challenge lies in combining semantic retrieval 
+with skill-type classification under ranking-based evaluation metrics such as nDCG and MAP. 
+Because TalentCLEF includes multilingual data, models must operate across languages without relying 
+solely on translation. Additionally, skill labels are structured and taxonomy-aligned, requiring 
+systems to distinguish between different types of competencies rather than simply detecting skill mentions.
 
-Core skills refer to competencies that are essential for performing a job independently of the organization or context. Complementary skills support the role but may vary depending on industry or employer requirements. Transversal skills represent broad, transferable abilities such as communication or teamwork that apply across multiple occupations.
-
-The dataset consists of three components. The training set includes more than 5,000 job titles paired with professional skills. The development set contains 200 job titles with skills normalized to ESCO terminology, along with annotations specifying whether each skill is core or contextual. The test set includes 500 job titles for which participants must predict both relevant skills and their corresponding skill types using a provided gazetteer.
-
-Model performance will be evaluated using information retrieval metrics such as Normalized Discounted Cumulative Gain (nDCG) and Mean Average Precision (MAP), along with Mean Reciprocal Rank (MRR) and Precision@K. This evaluation framework emphasizes both ranking quality and classification accuracy.
-
+%% ---------------------------------------------------------------
 \section{Literature Review}
+%% ---------------------------------------------------------------
 
-Research on job-skill modeling has developed along three major directions: skill extraction from job advertisements, occupational classification, and skill categorization. Since our task requires both retrieval and classification, insights from each of these areas are relevant.
+The work most relevant to this task covers three areas: pulling skills out of job text,
+sorting those skills into the right categories, and dealing with skills that are vague or
+implied rather than stated outright. Six papers are reviewed below, each approaching one
+or more of these problems from a different angle.
 
-Recent work on job description parsing proposes an explainable transformer-based ensemble model designed to extract both technical and non-technical skills from job postings \cite{jobParsing2024}. The model combines convolutional layers to capture local phrase structures, bidirectional LSTMs to model long-range dependencies, and a Conditional Random Field (CRF) layer to refine sequence labeling decisions. These components operate on contextual embeddings generated by BERT. Using a manually annotated dataset of IT job roles, the system reports strong performance compared to classical baselines and also applies LIME to interpret model predictions. The authors further note challenges such as limited annotated data and difficulty recognizing newly emerging skills, which is relevant when predicting unseen skills in our task.
+Decorte et al.~\cite{Decorte2025ESCO} build a two-stage classifier that detects transversal
+skills in job ads using the ESCO taxonomy as the label standard. The first stage assigns a
+skill to one of six broad categories---Core, Thinking, Self-management, Social/communication,
+Physical, and Life skills. The second stage breaks that category down further into subclasses.
+Both stages use 768-dimensional sentence embeddings produced by a BERT-based Sentence
+Transformer fed into neural classifiers. One result worth highlighting: a multilingual embedding
+model performed within 0.55\% accuracy of an English-only model. That narrow gap is
+encouraging for our task, since it means we may not need a separate translation step to
+handle non-English job titles. The paper's label structure also maps directly onto the
+core/complementary/transversal distinction in TalentCLEF, making it a natural reference
+for how we set up the classification layer.
 
-Another relevant line of research addresses hierarchical occupational classification \cite{hierarchicalOccupation2025}. A transformer-based system fine-tuned on job posting text demonstrates how occupations can be mapped to structured taxonomies such as CIUO-08/ISCO-08. The study highlights the risk of hierarchical error propagation, where early mistakes cause larger downstream errors. While our task does not use a hierarchy of occupational labels, we similarly require careful differentiation between closely related skill types, where small errors can affect ranking-based evaluation.
+Gugnani and Misra~\cite{Gugnani2020WeaklySupervised} take a different approach to the
+extraction problem. Instead of manually labelling training data, they use ESCO itself to
+generate labels automatically. The idea is simple: pull all $n$-grams of length one to four
+from a job posting, embed them, and compare each embedding against the embeddings of
+ESCO skill entries using cosine similarity. Any $n$-gram that clears a set threshold gets
+labelled as a skill. They test three ways of building these embeddings on top of both
+RoBERTa and the job-domain model JobBERT---encoding the phrase on its own (ISO),
+averaging its embedding across every time it appears in the corpus (AOC), and weighting
+token embeddings by IDF scores (WSE). WSE comes out on top, hitting a loose F1 of 59.61
+with RoBERTa on the Sayfullina benchmark. On the harder SkillSpan benchmark, however,
+JobBERT pulls ahead of RoBERTa, which confirms that pre-training on job-specific text
+makes a real difference. 
 
-Skill categorization has also been explored through domain-specific language modeling. SkillBERT introduces a BERT model trained from scratch on a large corpus of job requisitions to better represent skills and their relationships \cite{SkillBERT2023}. The study derives embedding-based features and applies downstream classifiers for multi-label categorization, showing that domain-trained representations can outperform generic embeddings. This is relevant to our setting because skill meaning often depends on labor-market context rather than general language usage.
+JobBERT-V3, presented by Decorte et al.~\cite{DecorteJobBERTv3}, is trained on 21 million
+job titles across English, German, Spanish, and Chinese using GPT-4.1-generated synthetic
+translations of a proprietary English dataset. The model is built on multilingual MPNet and
+projects its 768-dimensional representations up to 1024 dimensions through an asymmetric
+linear layer. It is trained with InfoNCE contrastive loss, where shared ESCO skill annotations
+act as the bridge that pulls equivalent job titles from different languages toward the same
+point in embedding space. When applied to skill retrieval without any task-specific fine-tuning,
+it reaches a MAP of 0.245 on the validation split. 
 
-Transversal skill detection presents an additional layer of complexity. Transversal skills are often implied rather than explicitly listed, making them harder to identify reliably \cite{TransversalSkills2024}. The study proposes specialized neural classifiers and applies augmentation and sampling to reduce imbalance. It also introduces keyword extraction methods for interpretability, which is useful when justifying why a certain skill is categorized as transversal rather than core or complementary.
+Bhola et al.~\cite{Bhola2020SkillBERT} train SkillBERT, a BERT model trained from scratch
+on 700,000 job requisitions covering 2,997 unique skills, specifically to produce useful
+skill embeddings. The downstream task is to classify each skill into one or more of 40
+competency groups, making it a multi-label problem. Their feature set combines three types
+of signal: cosine similarity scores between a skill's embedding and each group centroid,
+cluster membership labels generated by K-means (45 clusters) and spectral clustering
+(35 clusters), and the output probabilities from a two-layer neural network classifier
+trained on the SkillBERT embeddings directly. The results show a clear jump in XGBoost
+F1 when moving from pre-trained BERT (60.84\%) to Word2Vec (66.73\%) to SkillBERT
+(90.35\%). The main takeaway is that the quality of the embedding model matters far more than
+the cleverness of the features built on top of it. For us, this is a strong case for starting
+from a job-domain checkpoint rather than a general BERT, even if training a full SkillBERT
+from scratch is not feasible here.
 
-Across these studies, several findings are consistent: transformer-based contextual embeddings outperform traditional approaches, domain adaptation improves representation quality, and interpretability is valuable for validating decisions. Our task builds on these insights by combining retrieval and skill-type classification under ranking-based evaluation metrics.
+Pooja et al.~\cite{Pooja2024TechnicalNER} focus on extracting technical skills from data
+science job postings scraped from Indeed, covering 6,325 vacancies. They compare TF-IDF,
+text classification, and Named Entity Recognition (NER) as candidate methods, settling on
+NER because it reads context and grammatical structure rather than just counting word
+frequencies. They fine-tune three pre-trained models: spaCy, BERT in its RoBERTa form,
+and XLNet. BERT gives the best overall result with an F1 of 93.17\%, supported by a
+precision of 92.31\% and a recall of 94.19\%. XLNet hits the highest precision at 95.22\%
+but recall falls to 69.96\%, which is a meaningful trade-off when missing a skill costs more
+than a false alarm. The paper also makes a practical point about preprocessing: dropping
+stopwords and applying stemming, steps that help traditional models, actually hurt
+transformer-based models because transformers need the full sentence to build accurate
+contextual representations. That finding directly shapes the preprocessing choices we make.
 
+Vera et al.~\cite{Vera2025BETO} build an occupational classifier for the Chilean labor market,
+mapping job postings to codes in the four-level CIUO-08/ISCO-08 taxonomy. Their dataset
+of 4,605 postings, drawn from six online job boards and labeled by domain experts
+The model is BETO, a Spanish-language BERT, fine-tuned on this data. At the most detailed (four-digit)
+level it reaches a weighted accuracy of 0.69 and an F1 of 0.66, beating both an SVM and an
+LSTM baseline. The SVM holds up reasonably at broad levels but falls apart at the fine-grained
+ones; the LSTM underperforms across the board. The main structural issue this paper surfaces
+is cascading errors: if a prediction is wrong at the top level of a hierarchy, every level
+below it is also likely to be wrong. Our three-way classification (core/complementary/transversal)
+does not have four levels, but core is implicitly the most selective of the three labels, and
+the lesson here is that models which account for that structure tend to do better than
+those that treat all labels as equivalent and independent.
+
+Across all six papers, a few consistent takeaways emerge. Domain-adapted encoders
+reliably beat general-purpose BERT for both extraction and classification. Cosine similarity
+against ESCO embeddings is a more robust retrieval signal than keyword matching. Transversal
+skills need their own dedicated treatment and do not respond well to the same NER pipelines
+used for technical skills. And benchmark scores should be read with some caution, since
+label noise in evaluation sets is a documented problem in this space.
+
+%%
+%% Define the bibliography file to be used
 \bibliography{bibfile}
+
+%%
+%% Appendix
+\appendix
+
+\section{Online Resources}
+
+The sources for the ceur-art style are available via
+\begin{itemize}
+\item \href{https://github.com/yamadharma/ceurart}{GitHub},
+\item
+  \href{https://www.overleaf.com/latex/templates/template-for-submissions-to-ceur-workshop-proceedings-ceur-ws-dot-org/pkfscdkgkhcq}{Overleaf template}.
+\end{itemize}
 
 \end{document}

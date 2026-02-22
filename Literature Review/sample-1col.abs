@@ -1,1 +1,9 @@
-This paper addresses the task of Job-Skill Matching with Skill Type Classification. The objective is to retrieve relevant professional skills for a given job title and further classify each skill into one of three categories: core, complementary, or transversal. The task combines information retrieval and multi-label classification, requiring models that understand semantic relationships between job titles and skills while distinguishing essential competencies from contextual or broad transferable skills. We review prior work on skill extraction, occupational classification, domain-specific embeddings, and transversal skill detection to inform our methodological approach.
+This literature review addresses the task of Job-Skill Matching with Skill Type Classification.
+The task requires, given a job title, retrieving a ranked list of
+relevant skills and classifying each as core, complementary, or
+transversal. We are provided a training set of at least 5,000 job title--skill pairs, a development
+set of 200 job titles with ESCO-normalised skill annotations carrying a core/contextual relevance
+label, and a test set of 500 job titles for blind evaluation. We survey
+six prior works that address skill extraction, weakly supervised skill matching, occupational
+classification, domain-adaptive pretraining, technical NER, and transversal skill detection ---
+each contributing methods or findings we draw on in building our approach.

@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{6}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -12,24 +12,34 @@
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
 %Type = Article
-\bibitem[{Author(2024)}]{jobParsing2024}
-\bibinfo{author}{U.~Author},
-\newblock \bibinfo{title}{Job description parsing with explainable transformer-based ensemble models},
-\newblock \bibinfo{journal}{Artificial Intelligence Review}  (\bibinfo{year}{2024}). \DOIprefix\doi{10.1016/j.artint.2024.100505}, \bibinfo{note}{skill extraction using CNN, BiLSTM, CRF on BERT embeddings}.
-%Type = Inproceedings
-\bibitem[{Author(2025)}]{hierarchicalOccupation2025}
-\bibinfo{author}{U.~Author},
-\newblock \bibinfo{title}{A transformer-based intelligent system for hierarchical occupational classification in the labor market},
-\newblock in: \bibinfo{booktitle}{IEEE Conference Proceedings}, \bibinfo{publisher}{IEEE}, \bibinfo{year}{2025}. \DOIprefix\doi{10.1109/XXXXX.2025.11250910}, \bibinfo{note}{hierarchical classification using BETO model}.
-%Type = Article
-\bibitem[{Author(2023)}]{SkillBERT2023}
-\bibinfo{author}{U.~Author},
-\newblock \bibinfo{title}{Skillbert: Skilling the bert to classify skills},
-\newblock \bibinfo{journal}{Preprint}  (\bibinfo{year}{2023}). \bibinfo{note}{Domain-specific BERT trained on 700k job postings for multi-label skill classification}.
-%Type = Article
-\bibitem[{Author(2024)}]{TransversalSkills2024}
-\bibinfo{author}{U.~Author},
+\bibitem[{Decorte et~al.(2025)Decorte, Van~Hautte, Demeester, and Develder}]{Decorte2025ESCO}
+\bibinfo{author}{J.-J. Decorte}, \bibinfo{author}{J.~Van~Hautte}, \bibinfo{author}{T.~Demeester}, \bibinfo{author}{C.~Develder},
 \newblock \bibinfo{title}{Techniques for transversal skill classification and relevant keyword extraction from job advertisements},
-\newblock \bibinfo{journal}{Information} \bibinfo{volume}{16} (\bibinfo{year}{2024}) \bibinfo{pages}{167}. \DOIprefix\doi{10.3390/info16030167}.
+\newblock \bibinfo{journal}{Information} \bibinfo{volume}{16} (\bibinfo{year}{2025}) \bibinfo{pages}{167}. \URLprefix \url{https://www.mdpi.com/2078-2489/16/3/167}. \DOIprefix\doi{10.3390/info16030167}.
+%Type = Inproceedings
+\bibitem[{Gugnani and Misra(2020)}]{Gugnani2020WeaklySupervised}
+\bibinfo{author}{A.~Gugnani}, \bibinfo{author}{H.~Misra},
+\newblock \bibinfo{title}{Implicit skills extraction using document embedding and its applications in job description parsing},
+\newblock in: \bibinfo{booktitle}{arXiv preprint}, \bibinfo{year}{2020}. \URLprefix \url{https://arxiv.org/pdf/2209.08071}. \DOIprefix\doi{10.48550/arXiv.2209.08071}.
+%Type = Article
+\bibitem[{Decorte et~al.(2025)}]{DecorteJobBERTv3}
+\bibinfo{author}{J.-J. Decorte}, et~al.,
+\newblock \bibinfo{title}{{JobBERT-V3}: A contrastive learning model for cross-lingual job title matching},
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2507.21609}  (\bibinfo{year}{2025}). \URLprefix \url{https://arxiv.org/pdf/2507.21609v1}.
+%Type = Inproceedings
+\bibitem[{Bhola et~al.(2020)Bhola, Halder, Prasad, and Kan}]{Bhola2020SkillBERT}
+\bibinfo{author}{A.~Bhola}, \bibinfo{author}{K.~Halder}, \bibinfo{author}{A.~Prasad}, \bibinfo{author}{M.-Y. Kan},
+\newblock \bibinfo{title}{{SkillBERT}: ``skilling'' the {BERT} to classify skills},
+\newblock in: \bibinfo{booktitle}{Proceedings of the 28th International Conference on Computational Linguistics}, \bibinfo{year}{2020}. \URLprefix \url{https://www.studocu.com/in/document/sardar-vallabhbhai-national-institute-of-technology-surat/integrated-masters-in-physics/1-skillbert-skilling-the-bert-to/86064638}.
+%Type = Article
+\bibitem[{Pooja(2024)}]{Pooja2024TechnicalNER}
+\bibinfo{author}{e.~a. Pooja},
+\newblock \bibinfo{title}{Technical skills information extraction from resumes using advanced natural language processing model with transfer learning},
+\newblock \bibinfo{journal}{Research Square Preprint}  (\bibinfo{year}{2024}). \URLprefix \url{https://www.researchsquare.com/article/rs-7744440/v1}. \DOIprefix\doi{10.21203/rs.3.rs-7744440/v1}.
+%Type = Article
+\bibitem[{Vera(2025)}]{Vera2025BETO}
+\bibinfo{author}{e.~a. Vera},
+\newblock \bibinfo{title}{A transformer-based intelligent system for hierarchical occupational classification in the labor market},
+\newblock \bibinfo{journal}{IEEE Access}  (\bibinfo{year}{2025}). \URLprefix \url{https://ieeexplore.ieee.org/document/11250910}. \DOIprefix\doi{10.1109/ACCESS.2025.11250910}.
 
 \end{thebibliography}
