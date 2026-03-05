@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -12,34 +12,39 @@
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
 %Type = Article
-\bibitem[{Decorte et~al.(2025)Decorte, Van~Hautte, Demeester, and Develder}]{Decorte2025ESCO}
-\bibinfo{author}{J.-J. Decorte}, \bibinfo{author}{J.~Van~Hautte}, \bibinfo{author}{T.~Demeester}, \bibinfo{author}{C.~Develder},
+\bibitem[{Gavrilescu et~al.(2025)Gavrilescu, Leon, and Minea}]{Gavrilescu2025}
+\bibinfo{author}{M.~Gavrilescu}, \bibinfo{author}{F.~Leon}, \bibinfo{author}{A.-A. Minea},
 \newblock \bibinfo{title}{Techniques for transversal skill classification and relevant keyword extraction from job advertisements},
-\newblock \bibinfo{journal}{Information} \bibinfo{volume}{16} (\bibinfo{year}{2025}) \bibinfo{pages}{167}. \URLprefix \url{https://www.mdpi.com/2078-2489/16/3/167}. \DOIprefix\doi{10.3390/info16030167}.
-%Type = Inproceedings
-\bibitem[{Gugnani and Misra(2020)}]{Gugnani2020WeaklySupervised}
-\bibinfo{author}{A.~Gugnani}, \bibinfo{author}{H.~Misra},
-\newblock \bibinfo{title}{Implicit skills extraction using document embedding and its applications in job description parsing},
-\newblock in: \bibinfo{booktitle}{arXiv preprint}, \bibinfo{year}{2020}. \URLprefix \url{https://arxiv.org/pdf/2209.08071}. \DOIprefix\doi{10.48550/arXiv.2209.08071}.
+\newblock \bibinfo{journal}{Information} \bibinfo{volume}{16} (\bibinfo{year}{2025}) \bibinfo{pages}{167}. \DOIprefix\doi{10.3390/info16030167}.
 %Type = Article
-\bibitem[{Decorte et~al.(2025)}]{DecorteJobBERTv3}
-\bibinfo{author}{J.-J. Decorte}, et~al.,
-\newblock \bibinfo{title}{{JobBERT-V3}: A contrastive learning model for cross-lingual job title matching},
-\newblock \bibinfo{journal}{arXiv preprint arXiv:2507.21609}  (\bibinfo{year}{2025}). \URLprefix \url{https://arxiv.org/pdf/2507.21609v1}.
+\bibitem[{Akkasi(2024)}]{Akkasi2024}
+\bibinfo{author}{A.~Akkasi},
+\newblock \bibinfo{title}{Job description parsing with explainable transformer based ensemble models to extract the technical and non-technical skills},
+\newblock \bibinfo{journal}{Natural Language Processing Journal} \bibinfo{volume}{9} (\bibinfo{year}{2024}) \bibinfo{pages}{100102}. \DOIprefix\doi{10.1016/j.nlp.2024.100102}.
 %Type = Inproceedings
-\bibitem[{Bhola et~al.(2020)Bhola, Halder, Prasad, and Kan}]{Bhola2020SkillBERT}
+\bibitem[{Zhang et~al.(2022)Zhang, Jensen, Sonniks, and Plank}]{Zhang2022}
+\bibinfo{author}{M.~Zhang}, \bibinfo{author}{K.~N. Jensen}, \bibinfo{author}{S.~D. Sonniks}, \bibinfo{author}{B.~Plank},
+\newblock \bibinfo{title}{{SkillSpan}: Hard and soft skill extraction from {English} job postings},
+\newblock in: \bibinfo{booktitle}{Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies}, \bibinfo{publisher}{Association for Computational Linguistics}, \bibinfo{address}{Seattle, United States}, \bibinfo{year}{2022}, pp. \bibinfo{pages}{4962--4984}.
+%Type = Inproceedings
+\bibitem[{Ngo et~al.(2023)Ngo, Nguyen, Nguyen, and Tran}]{Ngo2020CVExtraction}
+\bibinfo{author}{T.~M. Ngo}, \bibinfo{author}{Q.~N. Nguyen}, \bibinfo{author}{T.~D. Nguyen}, \bibinfo{author}{O.~T. Tran},
+\newblock \bibinfo{title}{A two-phase framework for automated information extraction from curriculum vitae},
+\newblock in: \bibinfo{booktitle}{2023 15th International Conference on Knowledge and Systems Engineering (KSE)}, \bibinfo{publisher}{IEEE}, \bibinfo{year}{2023}, pp. \bibinfo{pages}{1--6}. \DOIprefix\doi{10.1109/KSE59128.2023.10299459}.
+%Type = Inproceedings
+\bibitem[{Bhola et~al.(2020)Bhola, Halder, Prasad, and Kan}]{Bhola2020XMLC}
 \bibinfo{author}{A.~Bhola}, \bibinfo{author}{K.~Halder}, \bibinfo{author}{A.~Prasad}, \bibinfo{author}{M.-Y. Kan},
-\newblock \bibinfo{title}{{SkillBERT}: ``skilling'' the {BERT} to classify skills},
-\newblock in: \bibinfo{booktitle}{Proceedings of the 28th International Conference on Computational Linguistics}, \bibinfo{year}{2020}. \URLprefix \url{https://www.studocu.com/in/document/sardar-vallabhbhai-national-institute-of-technology-surat/integrated-masters-in-physics/1-skillbert-skilling-the-bert-to/86064638}.
+\newblock \bibinfo{title}{Retrieving skills from job descriptions: A language model based extreme multi-label classification framework},
+\newblock in: \bibinfo{booktitle}{Proceedings of the 28th International Conference on Computational Linguistics}, \bibinfo{publisher}{International Committee on Computational Linguistics}, \bibinfo{address}{Barcelona, Spain (Online)}, \bibinfo{year}{2020}, pp. \bibinfo{pages}{5832--5842}.
 %Type = Article
-\bibitem[{Pooja(2024)}]{Pooja2024TechnicalNER}
-\bibinfo{author}{e.~a. Pooja},
-\newblock \bibinfo{title}{Technical skills information extraction from resumes using advanced natural language processing model with transfer learning},
-\newblock \bibinfo{journal}{Research Square Preprint}  (\bibinfo{year}{2024}). \URLprefix \url{https://www.researchsquare.com/article/rs-7744440/v1}. \DOIprefix\doi{10.21203/rs.3.rs-7744440/v1}.
-%Type = Article
-\bibitem[{Vera(2025)}]{Vera2025BETO}
-\bibinfo{author}{e.~a. Vera},
-\newblock \bibinfo{title}{A transformer-based intelligent system for hierarchical occupational classification in the labor market},
-\newblock \bibinfo{journal}{IEEE Access}  (\bibinfo{year}{2025}). \URLprefix \url{https://ieeexplore.ieee.org/document/11250910}. \DOIprefix\doi{10.1109/ACCESS.2025.11250910}.
+\bibitem[{Leon et~al.(2024)Leon, Gavrilescu, Floria, and Minea}]{Leon2024Hierarchical}
+\bibinfo{author}{F.~Leon}, \bibinfo{author}{M.~Gavrilescu}, \bibinfo{author}{S.-A. Floria}, \bibinfo{author}{A.~A. Minea},
+\newblock \bibinfo{title}{Hierarchical classification of transversal skills in job advertisements based on sentence embeddings},
+\newblock \bibinfo{journal}{Information} \bibinfo{volume}{15} (\bibinfo{year}{2024}) \bibinfo{pages}{151}. \DOIprefix\doi{10.3390/info15030151}.
+%Type = Inproceedings
+\bibitem[{Khaouja et~al.(2021)Khaouja, Mezzour, and Kassou}]{Khaouja2021Unsupervised}
+\bibinfo{author}{I.~Khaouja}, \bibinfo{author}{G.~Mezzour}, \bibinfo{author}{I.~Kassou},
+\newblock \bibinfo{title}{Unsupervised skill identification from job ads},
+\newblock in: \bibinfo{booktitle}{2021 IEEE 22nd International Conference on Information Reuse and Integration for Data Science (IRI)}, \bibinfo{publisher}{IEEE}, \bibinfo{year}{2021}, pp. \bibinfo{pages}{147--151}. \DOIprefix\doi{10.1109/IRI51335.2021.00026}.
 
 \end{thebibliography}
