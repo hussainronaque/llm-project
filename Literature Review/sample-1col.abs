@@ -1,8 +1,0 @@
-This literature review addresses the task of Job-Skill Matching with Skill Type
-Classification. The task requires, given a job title, retrieving a ranked list of relevant
-skills and classifying each as core, complementary, or transversal. We are provided a
-training set of at least 5,000 job title--skill pairs, a development set of 200 job titles
-with ESCO-normalised skill annotations carrying a core/contextual relevance label, and a
-test set of 500 job titles for blind evaluation. We survey multiple prior works covering
-skill classification and skill extraction, each contributing methods or findings we draw on
-in building our approach.

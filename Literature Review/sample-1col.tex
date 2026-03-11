@@ -86,32 +86,34 @@ reviewed below each tackle a different piece of this problem, yet together they 
 the methodological foundations we build upon.
 
 The study titled ``Techniques for Transversal Skill Classification and Relevant Keyword
-Extraction from Job Advertisements'' ~\cite{Gavrilescu2025}
+Extraction from Job Advertisements''~\cite{Gavrilescu2025}
 presents a two-stage classification pipeline that identifies transversal skills in job
 ads according to the ESCO taxonomy. The first stage places a skill into one of six
 broad groups---Core, Thinking, Self-management, Social/communication, Physical, and
 Life skills---while the second stage refines that assignment into finer subclasses.
-Both stages rely on 768-dimensional sentence embeddings from a BERT-based Sentence
-Transformer passed into neural classifiers. A particularly encouraging finding is that
-a multilingual embedding model came within 0.55\% accuracy of an English-only model,
-which suggests that a separate translation step may not be necessary when handling
-non-English job titles in TalentCLEF. The label hierarchy used in this work maps
-naturally onto the core/complementary/transversal distinction required by our task.
+Both stages use TF-IDF word features as inputs to fully connected neural network
+classifiers. In addition to classification, the authors extract keywords associated
+with each skill category using feature importance metrics and TF-IDF scoring. The
+six ESCO transversal categories used in this work provide a useful reference for how
+skill types can be structured, which is relevant to the type-level labelling required
+by TalentCLEF.
 
 Building on the theme of skill extraction from unstructured text, the work titled
 ``Job Description Parsing with Explainable Transformer Based Ensemble Models to Extract
-the Technical and Non-Technical Skills'' ~\cite{Akkasi2024} takes an ensemble
-route that combines five extractors (a BiLSTM, a CNN-enhanced BiLSTM, CRF-augmented
-versions of both, and a standalone CRF) all operating on BERT contextualised
-embeddings, with majority voting producing the final output. The deep components are
-further trained under a shared multi-task objective. The
-author scraped around 30,000 job advertisements covering 22 IT roles, and annotated them with an inventory of over 7,000
-skill surface forms. The resulting multi-task ensemble reached F-scores of 67\% for
-non-technical skills and 72\% for technical skills. Ensemble voting offers 
-a practical way to stabilise the ranking metrics that TalentCLEF
-uses for evaluation, and the consistent gap between hard-skill and soft-skill
-performance foreshadows the difficulty of distinguishing transversal competences from
-core ones, given that transversal skills tend to appear in vaguer language.
+the Technical and Non-Technical Skills''~\cite{Akkasi2024} takes an ensemble
+route that combines five extractors---two BiLSTM variants (one fed directly by BERT
+embeddings, the other through a CNN feature layer), their respective CRF-augmented
+versions, and a standalone CRF with hand-crafted features---with majority voting
+producing the final output. The deep components are also trained jointly under a
+multi-task objective. The author scraped 30,695 job advertisements from LinkedIn,
+Glassdoor, Indeed, and StepStone covering 22 IT roles, and annotated them using a
+curated inventory of 7,170 hard skills and 269 soft skills. The resulting multi-task
+ensemble reached F-scores of 67\% for non-technical skills and 72\% for technical
+skills. Ensemble voting offers a practical way to stabilise the ranking metrics that
+TalentCLEF uses for evaluation, and the consistent gap between hard-skill and
+soft-skill performance foreshadows the difficulty of distinguishing transversal
+competences from core ones, given that transversal skills tend to appear in vaguer
+language.
 
 Another contribution is the work titled ``SkillSpan: Hard and Soft Skill
 Extraction from English Job Postings'' ~\cite{Zhang2022} which introduces 
@@ -167,6 +169,13 @@ data and ambiguous boundaries. The multilingual embedding model performed within
 0.55\% of its English-only counterpart, reinforcing the finding from Gavrilescu et
 al.~\cite{Gavrilescu2025} that translation steps may be unnecessary for multilingual
 European data.
+
+Another work titled “Comparing Discriminative, Contrastive, and Prompt-Based Methods for Job Title and Skill Matching” has focused on automatically identifying the most relevant skills associated with a given job title, using ESCO based job titles and skills to train their models. Their work features three approaches: classification based, contrastive learning, and prompt based embedding methods.  For the job to skill matching task, the classification based approach reformulates the ranking problem as a binary classification task. A multilingual encoder generates embeddings for job titles and skills, and a classification layer on top of it predicts if the skill is relevant, allowing the model to learn job-skill relationships from labeled data. During training, each job title and correct skill pair was treated as a positive example, while incorrect job-skill pairs were generated as negative 
+examples by randomly sampling unrelated skills. In contrast, the contrastive learning approach trains embedding models to place related job titles and skills closer in the vector space, while prompt-based models rely on pretrained, instruction-tuned embedding models in a zero-shot setting to rank skills based on cosine similarity. The results showed that classification based models performed best for the job title to skill matching task. The highest MAP score achieved by classification models was 0.290, outperforming the other two approaches. ~\cite{zhang2025nlpnorth}
+
+The next study “Beyond Titles: Semantic Matching of Jobs and Skills Using LLMs and S-BERT” focuses on the same problem from TalentCLEF 2025 Task B, i.e. to predict which skills match a given job title. Instead of simply comparing the job title with skill names, the authors tried to understand the meaning behind them. Their method first uses large language models to generate short descriptions of both the job titles and the skills. These descriptions give more context about what the job or skill actually involves. Then they convert these descriptions into dense vector embeddings using a Sentence-BERT model; all-MiniLM-L6-v2. Once both jobs and skills are represented as vectors, cosine similarity is used to measure the semantic relatedness between job and skill representations.To improve reliability, the authors used multiple prompt setups and models to generate the descriptions, combining all results to produce a final ranking of the most relevant skills for each job title. The proposed ensemble model achieved a MAP score of 0.2442 on the development set and 0.278 on the test set, outperforming the official baseline system which relied only on direct title embeddings. The results show how adding meaningful descriptions for jobs and skills can help improve job title matching with the right skills. ~\cite{vazquez2025beyond}
+
+Similarly, a study titled “Enhancing Job-Skill Matching with LLM-Driven Data Augmentation and Fine-Tuned Bi-Encoders” also focuses on the problem in TalentCLEF 2025 Task B challenge. Initially, they experimented with two types of models: cross-encoders and bi-encoders. Cross-encoders allow the model to understand job title and skill relationship more deeply, but they are very slow. While bi-encoders are much faster since they create embeddings for jobs and skills independently but perform poorly as job titles and skill names are very short and lack context. To solve this, the authors enrich the input data by adding descriptions, a large language model was used to generate descriptions for each job title. The final system uses a fine-tuned bi-encoder model that compares job and skill embeddings using cosine similarity. The models were trained using contrastive learning so that relevant job-skill pairs receive higher similarity scores than unrelated ones. After experimenting with several pretrained models, the best results were achieved using the E5-Instruct encoder combined with LLM-generated job descriptions and ESCO skill descriptions. The proposed system achieved a MAP score of 0.345 on the official test set, showing that adding contextual information through LLM-generated descriptions can significantly improve job-skill matching performance. ~\cite{ali2025jobskill}
 
 Finally, the work titled ``Unsupervised Skill Identification from Job Ads'' 
 ~\cite{Khaouja2021Unsupervised} takes a different route by avoiding
@@ -234,6 +243,30 @@ Unsupervised Skill Identification from Job Ads~\cite{Khaouja2021Unsupervised}
   & 100 labelled job ads; ESCO skill base
   & Sent2vec + ESCO similarity retrieval; Wikipedia/DBpedia
   & Precision 83\%, Recall 78\% (hard skills) \\
+
+\addlinespace
+Enhancing Job-Skill Matching with LLM-Driven Data Augmentation and Fine-Tuned Bi-Encoders~\cite{ali2025jobskill}
+  & Job–skill matching
+  & TalentCLEF 2025 Task B dataset based on the ESCO skills database
+  & Pretrained encoders (ESCOXLM-R, E5-Large, E5-Instruct)
+  & Best system achieved MAP = 0.345 on the TalentCLEF test set \\
+
+\addlinespace
+Comparing Discriminative, Contrastive, and Prompt-Based Methods for Job Title and Skill Matching
+~\cite{zhang2025nlpnorth}
+  & Job–skill matching
+  & ESCO-based job titles and skills dataset used in TalentCLEF 2025 Task B
+  & mDeBERTa-v3-base (classification), multilingual-e5-large (contrastive), gte-Qwen2-7B-instruct (prompt-based)
+  & Best MAP: 0.290 achieved by classification model\\
+
+\addlinespace
+Beyond Titles: Semantic Matching of Jobs and Skills Using LLMs and S-BERT
+~\cite{vazquez2025beyond}
+  & Job–skill matching
+  & ESCO-based job titles and skills dataset used in TalentCLEF 2025 Task B
+  & S-BERT: all-MiniLM-L6-v2; LLMs for definition generation: gemma-3-4b-it-qat, gemma3:27b
+  & Ensemble MAP: 0.2442 (Dev), 0.278 (Test); Baseline MAP: 0.1874 (Dev), 0.196 (Test)\\
+  
 \bottomrule
 \end{tabular}
 \end{table*}

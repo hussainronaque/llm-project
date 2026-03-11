@@ -487,6 +487,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusSans-Bold-tlf-t1.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusSerif-Bold-tlf-t1.tfm
 INPUT ./sample-1col.bbl
 INPUT ./sample-1col.bbl
 INPUT sample-1col.bbl
@@ -494,13 +495,18 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/libertinus-type1/T1Libertinus
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/libertinus-type1/T1LibertinusMono-TLF.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/libertinus-type1/T1LibertinusMono-TLF.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t1.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/libertinus-type1/LibertinusSerif-Bold-tlf-t1.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusSerif-Bold-tlf-t1--base.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertinus-type1/lbts_sfissr.enc
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/libertinus-type1/LibertinusMono-Regular-tlf-t1.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t1--base.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertinus-type1/lbts_tll2u3.enc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/libertinus-type1/LibertinusSans-Bold-tlf-t1.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusSans-Bold-tlf-t1--base.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/libertinus-type1/LibertinusSans-Regular-tlf-t1.vf
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusSans-Regular-tlf-t1--base.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/libertinus-type1/LibertinusMono-Regular-tlf-t1.vf
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusMono-Regular-tlf-t1--base.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/libertinus-type1/lbts_tll2u3.enc
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/vf/public/libertinus-type1/LibertinusSerif-Bold-tlf-t1.vf
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/libertinus-type1/LibertinusSerif-Bold-tlf-t1--base.tfm
 INPUT sample-1col.aux
 INPUT ./sample-1col.out
 INPUT ./sample-1col.out
@@ -508,6 +514,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/fontawesome5/FontAwe
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertinus-type1/LibertinusMono-Regular.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertinus-type1/LibertinusSans-Bold.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertinus-type1/LibertinusSans-Regular.pfb
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertinus-type1/LibertinusSerif-Bold.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/libertinus-type1/LibertinusSerif-Regular.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
